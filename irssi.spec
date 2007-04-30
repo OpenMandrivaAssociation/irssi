@@ -43,9 +43,6 @@ Perl plugin for irssi.
 %setup -q 
 
 %build
-aclocal -I .
-autoconf
-automake -a -c
 
 %configure	--with-plugins \
 		--enable-ipv6 \
