@@ -1,14 +1,13 @@
 %define	name	irssi
-%define version 0.8.10
-%define release 10
+%define version 0.8.11
+%define rel 1
 
 Name:		%{name}
 Version:	%{version}
-Release: 	%mkrel %{release}
+Release: 	%mkrel %{rel}
 Summary:	Irssi is an IRC client
 License:	GPL
 Group:		Networking/IRC
-Patch0:     irssi-fix-bug-22151.patch
 BuildRequires:	glib2-devel ncurses-devel perl-devel
 URL:		http://irssi.org/
 Source0:	http://irssi.org/irssi/files/%{name}-%{version}.tar.bz2
@@ -42,7 +41,6 @@ Perl plugin for irssi.
 
 %prep
 %setup -q 
-%patch0 -p0
 
 %build
 aclocal -I .
