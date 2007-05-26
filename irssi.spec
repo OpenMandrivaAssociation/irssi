@@ -1,6 +1,6 @@
 %define	name	irssi
 %define version 0.8.11
-%define rel 1
+%define	rel	1
 
 Name:		%{name}
 Version:	%{version}
@@ -11,6 +11,7 @@ Group:		Networking/IRC
 BuildRequires:	glib2-devel ncurses-devel perl-devel
 URL:		http://irssi.org/
 Source0:	http://irssi.org/irssi/files/%{name}-%{version}.tar.bz2
+Patch0:		irssi-0.8.11-makefile-race-fix.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -27,7 +28,7 @@ Group:		Development/C
 Summary:	Static libraries for the development of irssi applications
 Requires:	%{name} = %{version}
 
-%description devel
+%description	devel
 Static libraries for the development of irssi applications.
 
 %package	perl
@@ -35,16 +36,15 @@ Group:		Networking/IRC
 Summary:	Perl plugin for irssi
 Requires:	%{name} = %{version}
 
-%description perl
+%description	perl
 Perl plugin for irssi.
-
 
 %prep
 %setup -q 
+%patch0 -p1 -b .parallel
 
 %build
-
-%configure	--with-plugins \
+%configure2_5x	--with-plugins \
 		--enable-ipv6 \
 		--with-proxy \
 		--with-socks \
@@ -54,19 +54,18 @@ Perl plugin for irssi.
 
 %make
 
-
 %install
-%{__rm} -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 # Files that should not be installed:
-%{__rm} -f $RPM_BUILD_ROOT%{perl_vendorarch}/perllocal.pod
-%{__rm} -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
+rm -f %{buildroot}%{perl_vendorarch}/perllocal.pod
+rm -rf %{buildroot}%{_docdir}/%{name}
 
-%multiarch_includes $RPM_BUILD_ROOT%{_includedir}/%{name}/config.h
+%multiarch_includes %{buildroot}%{_includedir}/%{name}/config.h
 
 %clean
-%{__rm} -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr (-,root,root)
@@ -97,5 +96,3 @@ Perl plugin for irssi.
 %{_libdir}/%{name}/modules/libperl_core.la
 %{perl_vendorarch}/Irssi*
 %{perl_vendorarch}/auto/*
-
-
