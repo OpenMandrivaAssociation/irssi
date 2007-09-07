@@ -35,6 +35,7 @@ Static libraries for the development of irssi applications.
 Group:		Networking/IRC
 Summary:	Perl plugin for irssi
 Requires:	%{name} = %{version}
+Conflicts:	perl-silc
 
 %description	perl
 Perl plugin for irssi.
