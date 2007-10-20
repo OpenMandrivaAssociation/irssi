@@ -1,6 +1,6 @@
 %define	name	irssi
 %define version 0.8.11
-%define	rel	1
+%define	rel	2
 
 Name:		%{name}
 Version:	%{version}
@@ -8,7 +8,7 @@ Release: 	%mkrel %{rel}
 Summary:	Irssi is an IRC client
 License:	GPL
 Group:		Networking/IRC
-BuildRequires:	glib2-devel ncurses-devel perl-devel
+BuildRequires:	glib2-devel ncurses-devel perl-devel openssl-devel
 URL:		http://irssi.org/
 Source0:	http://irssi.org/irssi/files/%{name}-%{version}.tar.bz2
 Patch0:		irssi-0.8.11-makefile-race-fix.patch
