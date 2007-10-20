@@ -1,6 +1,6 @@
 %define	name	irssi
-%define version 0.8.11
-%define	rel	2
+%define version 0.8.12
+%define	rel	1
 
 Name:		%{name}
 Version:	%{version}
@@ -11,7 +11,6 @@ Group:		Networking/IRC
 BuildRequires:	glib2-devel ncurses-devel perl-devel openssl-devel
 URL:		http://irssi.org/
 Source0:	http://irssi.org/irssi/files/%{name}-%{version}.tar.bz2
-Patch0:		irssi-0.8.11-makefile-race-fix.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -42,7 +41,6 @@ Perl plugin for irssi.
 
 %prep
 %setup -q 
-%patch0 -p1 -b .parallel
 
 %build
 %configure2_5x	--with-plugins \
