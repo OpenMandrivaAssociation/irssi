@@ -1,6 +1,6 @@
 %define	name	irssi
 %define version 0.8.12
-%define	rel	2
+%define	rel	3
 
 Name:		%{name}
 Version:	%{version}
@@ -11,6 +11,7 @@ Group:		Networking/IRC
 BuildRequires:	glib2-devel ncurses-devel perl-devel openssl-devel
 URL:		http://irssi.org/
 Source0:	http://irssi.org/irssi/files/%{name}-%{version}.tar.bz2
+Patch0:		perl-5.10.0-builtin-DynaLoader.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -40,9 +41,17 @@ Conflicts:	perl-silc
 Perl plugin for irssi.
 
 %prep
-%setup -q 
+%setup -q
+%if %mdkversion >= 200810
+# perl-5.10.0 has DynaLoader builtin in libperl (see perl's Changes @ 2006/03/20 10:21:50)
+%patch0 -p1
+%endif
 
 %build
+%if %mdkversion >= 200810
+# only for Patch0
+autoreconf
+%endif
 %configure2_5x	--with-plugins \
 		--enable-ipv6 \
 		--with-proxy \
