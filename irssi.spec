@@ -5,7 +5,7 @@
 Name:		%{name}
 Version:	%{version}
 Release: 	%mkrel %{rel}
-Summary:	Irssi is an IRC client
+Summary:	IRC client
 License:	GPL
 Group:		Networking/IRC
 BuildRequires:	glib2-devel ncurses-devel perl-devel openssl-devel
