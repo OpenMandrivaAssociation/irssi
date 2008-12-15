@@ -12,6 +12,7 @@ BuildRequires:	glib2-devel ncurses-devel perl-devel openssl-devel
 URL:		http://irssi.org/
 Source0:	http://irssi.org/irssi/files/%{name}-%{version}.tar.bz2
 Patch0:		perl-5.10.0-builtin-DynaLoader.patch
+Suggests:   irssi-perl
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -80,6 +81,7 @@ rm -rf %{buildroot}
 %doc AUTHORS README TODO NEWS docs/*
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
+%exclude %{_datadir}/%{name}/scripts
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/modules
 %exclude %{_libdir}/%{name}/modules/libfe_perl.*
@@ -104,3 +106,5 @@ rm -rf %{buildroot}
 %{_libdir}/%{name}/modules/libperl_core.la
 %{perl_vendorarch}/Irssi*
 %{perl_vendorarch}/auto/*
+%{_datadir}/%{name}/scripts
+
