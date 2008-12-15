@@ -1,12 +1,12 @@
 %define	name	irssi
 %define version 0.8.12
-%define	rel	3
+%define	rel	4
 
 Name:		%{name}
 Version:	%{version}
 Release: 	%mkrel %{rel}
 Summary:	IRC client
-License:	GPL
+License:	GPLv2+
 Group:		Networking/IRC
 BuildRequires:	glib2-devel ncurses-devel perl-devel openssl-devel
 URL:		http://irssi.org/
