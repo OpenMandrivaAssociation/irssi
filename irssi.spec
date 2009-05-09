@@ -1,6 +1,6 @@
 %define	name	irssi
-%define version 0.8.12
-%define	rel	4
+%define version 0.8.13
+%define	rel	1
 
 Name:		%{name}
 Version:	%{version}
@@ -10,8 +10,7 @@ License:	GPLv2+
 Group:		Networking/IRC
 BuildRequires:	glib2-devel ncurses-devel perl-devel openssl-devel
 URL:		http://irssi.org/
-Source0:	http://irssi.org/irssi/files/%{name}-%{version}.tar.bz2
-Patch0:		perl-5.10.0-builtin-DynaLoader.patch
+Source0:	http://irssi.org/files/%{name}-%{version}.tar.gz
 Suggests:   irssi-perl
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -43,16 +42,8 @@ Perl plugin for irssi.
 
 %prep
 %setup -q
-%if %mdkversion >= 200810
-# perl-5.10.0 has DynaLoader builtin in libperl (see perl's Changes @ 2006/03/20 10:21:50)
-%patch0 -p1
-%endif
 
 %build
-%if %mdkversion >= 200810
-# only for Patch0
-autoreconf
-%endif
 %configure2_5x	--with-plugins \
 		--enable-ipv6 \
 		--with-proxy \
@@ -71,8 +62,6 @@ rm -rf %{buildroot}
 rm -f %{buildroot}%{perl_vendorarch}/perllocal.pod
 rm -rf %{buildroot}%{_docdir}/%{name}
 
-%multiarch_includes %{buildroot}%{_includedir}/%{name}/config.h
-
 %clean
 rm -rf %{buildroot}
 
@@ -88,7 +77,6 @@ rm -rf %{buildroot}
 %exclude %{_libdir}/%{name}/modules/libperl_core.*
 %{_libdir}/%{name}/modules/*.so
 %{_libdir}/%{name}/modules/*.la
-%{_libdir}/%{name}/modules/*so.*
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_mandir}/man1/%{name}.1*
 
@@ -96,7 +84,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/%{name}/modules/*.a
 %{_includedir}/%{name}
-%multiarch %{multiarch_includedir}/%{name}
 
 %files perl
 %defattr(-,root,root)
