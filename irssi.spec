@@ -1,6 +1,6 @@
 %define	name	irssi
-%define version 0.8.14
-%define	rel	3
+%define version 0.8.15
+%define	rel	1
 
 Name:		%{name}
 Version:	%{version}
