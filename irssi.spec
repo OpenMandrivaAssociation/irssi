@@ -1,10 +1,9 @@
 %define	name	irssi
 %define version 0.8.15
-%define	rel	6
 
 Name:		%{name}
 Version:	%{version}
-Release: 	%mkrel %{rel}
+Release: 	%mkrel 7
 Summary:	IRC client
 License:	GPLv2+
 Group:		Networking/IRC
