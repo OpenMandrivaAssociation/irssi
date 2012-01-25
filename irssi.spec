@@ -3,7 +3,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release: 	%mkrel 7
+Release:	8
 Summary:	IRC client
 License:	GPLv2+
 Group:		Networking/IRC
