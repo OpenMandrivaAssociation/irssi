@@ -1,8 +1,5 @@
-%define	name	irssi
-%define version 0.8.15
-
-Name:		%{name}
-Version:	%{version}
+Name:		irssi
+Version:	0.8.15
 Release:	8
 Summary:	IRC client
 License:	GPLv2+
@@ -10,8 +7,7 @@ Group:		Networking/IRC
 BuildRequires:	glib2-devel ncurses-devel perl-devel openssl-devel
 URL:		http://irssi.org/
 Source0:	http://irssi.org/files/%{name}-%{version}.tar.gz
-Suggests:   irssi-perl
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Suggests:	irssi-perl
 
 %description
 Irssi is a modular and flexible IRC client for UNIX that has only a text mode
@@ -54,18 +50,13 @@ Perl plugin for irssi.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 # Files that should not be installed:
 rm -f %{buildroot}%{perl_vendorarch}/perllocal.pod
 rm -rf %{buildroot}%{_docdir}/%{name}
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr (-,root,root)
 %doc AUTHORS README TODO NEWS docs/*
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
@@ -80,12 +71,10 @@ rm -rf %{buildroot}
 %{_mandir}/man1/%{name}.1*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/%{name}/modules/*.a
 %{_includedir}/%{name}
 
 %files perl
-%defattr(-,root,root)
 %{_libdir}/%{name}/modules/libfe_perl.so
 %{_libdir}/%{name}/modules/libfe_perl.la
 %{_libdir}/%{name}/modules/libperl_core.so
@@ -93,4 +82,3 @@ rm -rf %{buildroot}
 %{perl_vendorarch}/Irssi*
 %{perl_vendorarch}/auto/*
 %{_datadir}/%{name}/scripts
-
