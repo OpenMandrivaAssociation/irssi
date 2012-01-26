@@ -4,7 +4,7 @@ Release:	8
 Summary:	IRC client
 License:	GPLv2+
 Group:		Networking/IRC
-BuildRequires:	glib2-devel ncurses-devel perl-devel openssl-devel
+BuildRequires:	glib2-devel ncurses-devel perl-devel >= 2:5.14.2-3 openssl-devel
 URL:		http://irssi.org/
 Source0:	http://irssi.org/files/%{name}-%{version}.tar.gz
 Suggests:	irssi-perl
