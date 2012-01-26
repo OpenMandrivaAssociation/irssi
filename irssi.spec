@@ -45,8 +45,7 @@ Perl plugin for irssi.
 		--with-socks \
 		--with-bot \
 		--with-perl=module \
-		--with-perl-lib=%{perl_vendorlib}
-
+		--with-perl-lib=vendor
 %make
 
 %install
