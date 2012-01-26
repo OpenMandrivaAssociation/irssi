@@ -39,7 +39,7 @@ Perl plugin for irssi.
 %setup -q
 
 %build
-%configure2_5x	--with-plugins \
+%configure2_5x	--with-modules \
 		--enable-ipv6 \
 		--with-proxy \
 		--with-socks \
