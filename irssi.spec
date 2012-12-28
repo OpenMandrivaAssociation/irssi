@@ -53,12 +53,11 @@ Perl plugin for irssi.
 %makeinstall_std
 
 # Files that should not be installed:
-rm -f %{buildroot}%{perl_vendorarch}/perllocal.pod
-rm -rf %{buildroot}%{_docdir}/%{name}
+rm -r %{buildroot}%{_docdir}/%{name}
 
 %files
 %doc AUTHORS README TODO NEWS docs/*
-%attr(755,root,root) %{_bindir}/*
+%{_bindir}/*
 %{_datadir}/%{name}
 %exclude %{_datadir}/%{name}/scripts
 %dir %{_libdir}/%{name}
@@ -88,7 +87,7 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 * Wed Feb 01 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.8.15-7
 + Revision: 770478
 - use versioned perl-devel dependency to get required linker flag fix
-- replace dead --with-plugins configurie option with --with-modules
+- replace dead --with-plugins configure option with --with-modules
 - cleanups
 - svn commit -m mass rebuild of perl extension against perl 5.14.2
 
