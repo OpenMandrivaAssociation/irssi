@@ -1,10 +1,11 @@
 Name:		irssi
 Version:	0.8.15
-Release:	7
+Release:	8
 Summary:	IRC client
 License:	GPLv2+
 Group:		Networking/IRC
-BuildRequires:	glib2-devel ncurses-devel perl-devel >= 2:5.14.2-3 openssl-devel
+BuildRequires:	pkgconfig(glib-2.0) pkgconfig(ncursesw) pkgconfig(openssl)
+BuildRequires:	perl-devel
 URL:		http://irssi.org/
 Source0:	http://irssi.org/files/%{name}-%{version}.tar.gz
 Suggests:	irssi-perl
@@ -79,8 +80,11 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %{perl_vendorarch}/auto/*
 %{_datadir}/%{name}/scripts
 
-
 %changelog
+* Fri Dec 28 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.8.15-8
+- use pkgconfig() deps for buildrequires
+- rebuild for new perl
+
 * Wed Feb 01 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.8.15-7
 + Revision: 770478
 - use versioned perl-devel dependency to get required linker flag fix
