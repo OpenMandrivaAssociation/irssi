@@ -1,6 +1,8 @@
+%define _disable_ld_no_undefined 1
+
 Name:		irssi
 Version:	0.8.15
-Release:	8
+Release:	9
 Summary:	IRC client
 License:	GPLv2+
 Group:		Networking/IRC
