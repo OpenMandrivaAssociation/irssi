@@ -2,8 +2,8 @@
 
 Summary:	IRC client
 Name:		irssi
-Version:	0.8.15
-Release:	17
+Version:	0.8.16
+Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://irssi.org/
@@ -75,7 +75,6 @@ rm -r %{buildroot}%{_docdir}/%{name}
 %{_mandir}/man1/%{name}.1*
 
 %files devel
-%{_libdir}/%{name}/modules/*.a
 %{_includedir}/%{name}
 
 %files perl
