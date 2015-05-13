@@ -2,8 +2,8 @@
 
 Summary:	IRC client
 Name:		irssi
-Version:	0.8.16
-Release:	2
+Version:	0.8.17
+Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://irssi.org/
@@ -46,6 +46,7 @@ Perl plugin for irssi.
 
 %build
 %configure2_5x \
+	--disable-static \
 	--with-modules \
 	--enable-ipv6 \
 	--with-proxy \
@@ -62,7 +63,7 @@ Perl plugin for irssi.
 rm -r %{buildroot}%{_docdir}/%{name}
 
 %files
-%doc AUTHORS README TODO NEWS docs/*
+%doc AUTHORS README.md TODO NEWS docs/*
 %{_bindir}/*
 %{_datadir}/%{name}
 %exclude %{_datadir}/%{name}/scripts
