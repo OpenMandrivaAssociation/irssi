@@ -2,12 +2,12 @@
 
 Summary:	IRC client
 Name:		irssi
-Version:	0.8.17
-Release:	2
+Version:	0.8.19
+Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://irssi.org/
-Source0:	http://irssi.org/files/%{name}-%{version}.tar.gz
+Source0:	http://irssi.org/files/%{name}-%{version}.tar.xz
 
 BuildRequires:	perl-devel
 BuildRequires:	pkgconfig(glib-2.0)

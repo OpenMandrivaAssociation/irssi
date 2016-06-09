@@ -1,5 +1,2 @@
-removed_sources:
-  irssi-0.8.15.tar.gz: b7cdcbd0399fac6e1dd14d5604c435a3d2e3eb18
-  irssi-0.8.16.tar.gz: 89cd9a40b63d3038a8c21c245b19e3ec6a8329b0
 sources:
-  irssi-0.8.17.tar.gz: feddda0d45d6706a2da92bd2612c9a20c237b0bd
+  irssi-0.8.19.tar.xz: aabdc5422aa5ada067cf4d0dfdd16e4c2c2a1e53
