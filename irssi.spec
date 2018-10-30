@@ -3,7 +3,7 @@
 Summary:	IRC client
 Name:		irssi
 Version:	1.1.1
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://irssi.org/
