@@ -2,14 +2,15 @@
 
 Summary:	IRC client
 Name:		irssi
-Version:	1.1.1
-Release:	2
+Version:	1.2.1
+Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://irssi.org/
-Source0:	https://github.com/irssi/irssi/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:	https://github.com/irssi/irssi/archive/%{version}.tar.gz
 
 BuildRequires:	perl-devel
+BuildRequires:	git-core
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(ncursesw)
 BuildRequires:	pkgconfig(openssl)
@@ -45,6 +46,9 @@ Perl plugin for irssi.
 %setup -q
 
 %build
+git init
+git add . && git commit -am 'init'
+bash autogen.sh
 %configure2_5x \
 	--disable-static \
 	--with-modules \
