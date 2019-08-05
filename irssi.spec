@@ -51,8 +51,9 @@ git config --global user.name "builder"
 git init
 git add . && git commit -am 'init'
 bash autogen.sh
-%configure2_5x \
+%configure \
 	--disable-static \
+	--enable-true-color \
 	--with-modules \
 	--enable-ipv6 \
 	--with-proxy \
@@ -90,4 +91,3 @@ rm -r %{buildroot}%{_docdir}/%{name}
 %{perl_vendorarch}/Irssi*
 %{perl_vendorarch}/auto/*
 %{_datadir}/%{name}/scripts
-
