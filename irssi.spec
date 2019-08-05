@@ -46,6 +46,8 @@ Perl plugin for irssi.
 %setup -q
 
 %build
+git config --global user.email "builder@openmandriva.org"
+git config --global user.name "builder"
 git init
 git add . && git commit -am 'init'
 bash autogen.sh
