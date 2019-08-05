@@ -1,4 +1,5 @@
 %define _disable_ld_no_undefined 1
+%bcond_with perl
 
 Summary:	IRC client
 Name:		irssi
@@ -8,8 +9,9 @@ License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://irssi.org/
 Source0:	https://github.com/irssi/irssi/archive/%{version}.tar.gz
-
+%if %{with perl}
 BuildRequires:	perl-devel
+%endif
 BuildRequires:	git-core
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(ncursesw)
@@ -33,6 +35,7 @@ Requires:	%{name} = %{version}
 %description	devel
 Static libraries for the development of irssi applications.
 
+%if %{with perl}
 %package	perl
 Group:		Networking/IRC
 Summary:	Perl plugin for irssi
@@ -41,6 +44,7 @@ Conflicts:	perl-silc
 
 %description	perl
 Perl plugin for irssi.
+%endif
 
 %prep
 %setup -q
@@ -59,7 +63,9 @@ bash autogen.sh
 	--with-proxy \
 	--with-socks \
 	--with-bot \
+%if %{with perl}
 	--with-perl=module \
+%endif
 	--with-perl-lib=vendor
 %make
 
@@ -76,8 +82,10 @@ rm -r %{buildroot}%{_docdir}/%{name}
 %exclude %{_datadir}/%{name}/scripts
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/modules
+%if %{with perl}
 %exclude %{_libdir}/%{name}/modules/libfe_perl.*
 %exclude %{_libdir}/%{name}/modules/libperl_core.*
+%endif
 %{_libdir}/%{name}/modules/*.so
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_mandir}/man1/%{name}.1*
@@ -85,9 +93,11 @@ rm -r %{buildroot}%{_docdir}/%{name}
 %files devel
 %{_includedir}/%{name}
 
+%if %{with perl}
 %files perl
 %{_libdir}/%{name}/modules/libfe_perl.so
 %{_libdir}/%{name}/modules/libperl_core.so
 %{perl_vendorarch}/Irssi*
 %{perl_vendorarch}/auto/*
 %{_datadir}/%{name}/scripts
+%endif
