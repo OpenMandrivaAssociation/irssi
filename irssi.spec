@@ -1,9 +1,9 @@
 %define _disable_ld_no_undefined 1
-%bcond_with perl
+%bcond_without perl
 
 Summary:	IRC client
 Name:		irssi
-Version:	1.2.1
+Version:	1.4.3
 Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
@@ -16,6 +16,7 @@ BuildRequires:	git-core
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(ncursesw)
 BuildRequires:	pkgconfig(openssl)
+BuildRequires:	meson
 Suggests:	irssi-perl
 
 %description
@@ -48,29 +49,18 @@ Perl plugin for irssi.
 
 %prep
 %setup -q
+%meson \
+	-Dwith-bot=yes \
+%if %{with perl}
+	-Dwith-perl=yes \
+%endif
+	-Denable-true-color=yes
 
 %build
-git config --global user.email "builder@openmandriva.org"
-git config --global user.name "builder"
-git init
-git add . && git commit -am 'init'
-bash autogen.sh
-%configure \
-	--disable-static \
-	--enable-true-color \
-	--with-modules \
-	--enable-ipv6 \
-	--with-proxy \
-	--with-socks \
-	--with-bot \
-%if %{with perl}
-	--with-perl=module \
-%endif
-	--with-perl-lib=vendor
-%make
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 
 # Files that should not be installed:
 rm -r %{buildroot}%{_docdir}/%{name}
@@ -87,11 +77,11 @@ rm -r %{buildroot}%{_docdir}/%{name}
 %exclude %{_libdir}/%{name}/modules/libperl_core.*
 %endif
 %{_libdir}/%{name}/modules/*.so
-%config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_mandir}/man1/%{name}.1*
 
 %files devel
 %{_includedir}/%{name}
+%{_libdir}/pkgconfig/*.pc
 
 %if %{with perl}
 %files perl
