@@ -9,9 +9,7 @@ License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://irssi.org/
 Source0:	https://github.com/irssi/irssi/archive/%{version}.tar.gz
-%if %{with perl}
 BuildRequires:	perl-devel
-%endif
 BuildRequires:	git-core
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(ncursesw)
