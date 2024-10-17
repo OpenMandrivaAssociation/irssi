@@ -7,7 +7,7 @@ Version:	1.4.5
 Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
-Url:		http://irssi.org/
+Url:		https://irssi.org/
 Source0:	https://github.com/irssi/irssi/archive/%{version}.tar.gz
 BuildRequires:	perl-devel
 BuildRequires:	git-core
